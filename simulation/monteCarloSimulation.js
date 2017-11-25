@@ -1,10 +1,10 @@
-var Chance = require('chance');
-var plotHeatmap = require('../visualization/plotHeatmap');
-var initGrid = require('./initGrid');
-var spinFlipAlgorithm = require('./metropolisAlgorithm');
-var monteCarloSweep = require('./monteCarloSweep');
-var defaultParameters = require('./defaultParameters');
-var animateSimulation = require('../visualization/animateSimulation');
+const Chance = require('chance');
+const plotHeatmap = require('../visualization/plotHeatmap');
+const initGrid = require('./initGrid');
+const spinFlipAlgorithm = require('./metropolisAlgorithm');
+const monteCarloSweep = require('./monteCarloSweep');
+const defaultParameters = require('./defaultParameters');
+const animateSimulation = require('../visualization/animateSimulation');
 
 module.exports = function () {
   let parameters = defaultParameters();

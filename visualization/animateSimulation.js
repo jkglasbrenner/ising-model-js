@@ -1,8 +1,8 @@
 // Use of toRecursiveAnim adapted from
 // https://tkowal.wordpress.com/2014/09/07/functional-javascript-passing-additional-arguments-to-callback/
 
-var animateHeatmap = require('./animateHeatmap');
-var monteCarloSweep = require('../simulation/monteCarloSweep');
+const animateHeatmap = require('./animateHeatmap');
+const monteCarloSweep = require('../simulation/monteCarloSweep');
 
 const toRecursiveAnim = function ( callback, grid, parameters, spinFlipAlgorithm,
                                    rng ) {

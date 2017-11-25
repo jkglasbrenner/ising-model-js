@@ -1,4 +1,4 @@
-var mod = require('../math/mod');
+const mod = require('../math/mod');
 
 module.exports = function ( x, y, n ) {
   let neighborhood = [

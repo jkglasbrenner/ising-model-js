@@ -1,4 +1,4 @@
-var neighbors = require('./neighbors');
+const neighbors = require('./neighbors');
 
 module.exports = function ( grid, i, j, parameters ) {
   let indicesSiteNeighbors = neighbors( i, j, parameters.n );

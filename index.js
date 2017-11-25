@@ -1,3 +1,3 @@
-var monteCarloSimulation = require('./simulation/monteCarloSimulation');
+const monteCarloSimulation = require('./simulation/monteCarloSimulation');
 
 monteCarloSimulation();

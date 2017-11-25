@@ -1,5 +1,5 @@
-var pickSite = require('./pickSite');
-var spinFlipEnergy = require('./spinFlipEnergy');
+const pickSite = require('./pickSite');
+const spinFlipEnergy = require('./spinFlipEnergy');
 
 module.exports = function ( grid, parameters, spinFlipAlgorithm, rng ) {
   let ij = pickSite( parameters.n, rng );
