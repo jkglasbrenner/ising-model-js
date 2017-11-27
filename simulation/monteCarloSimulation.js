@@ -5,8 +5,10 @@ const spinFlipAlgorithm = require('./metropolisAlgorithm');
 const monteCarloSweep = require('./monteCarloSweep');
 const defaultParameters = require('./defaultParameters');
 const animateSimulation = require('../visualization/animateSimulation');
+const sliders = require('../controls/sliders');
 
 module.exports = function () {
+  sliders();
   let parameters = defaultParameters();
   let rng = Chance( parameters.seed );
   let grid = initGrid( parameters.n, rng );
