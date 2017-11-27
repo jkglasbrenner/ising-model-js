@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/mason-cds-intro-comput-sci/ising-model#readme",
   "dependencies": {
-    "chance": "^1.0.12"
+    "chance": "^1.0.12",
+    "nouislider": "^10.1.0"
   }
 }
