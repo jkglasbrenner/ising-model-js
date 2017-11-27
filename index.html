@@ -1,9 +1,26 @@
 <!DOCTYPE HTML>
 <html>
 
+  <head>
+    <link href="/controls/nouislider.min.css" rel="stylesheet">
+    <link href="/visualization/visualization.css" rel="stylesheet">
+    <link href="/controls/controls.css" rel="stylesheet">
+  </head>
+
   <body>
 
-    <div id='isingModel' style='width:600px;height:600px;'></div>
+    <div class="visualization">
+      <div class="simulation" id='isingModel' style='width:600px;height:600px;'></div>
+
+      <div class="noUiSlider controls">
+        <div class="simButton">
+          <button id="startPauseButton">Start</button>
+          <button id="resetButton">Reset</button>
+        </div>
+        <div id='temperature'></div>
+        <span class="widget-val" id="temperatureValue"></span>
+      </div>
+    </div>
 
     <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
     <script src="dist/bundle.js"></script>
