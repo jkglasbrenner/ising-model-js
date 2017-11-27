@@ -4,7 +4,6 @@ module.exports = function () {
     seed: Math.floor(Math.random() * Math.pow(2, 31)),
     nsweeps: 1000,
     n: 100,
-    temperature: 2,
     colorscale: 'YlGnBu',
     heatmapID: 'isingModel',
     frameDelay: 0,
