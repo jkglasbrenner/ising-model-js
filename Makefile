@@ -47,6 +47,9 @@ clean :
 serve :
 	$(call servejs)
 
+$(DIST_DIR)/$(DIST_JS) : $(INDEX_JS)
+	$(call bundlejs)
+
 $(ALL_FILES) : | $(DIST_DIR)
 
 $(DIST_DIR) :
