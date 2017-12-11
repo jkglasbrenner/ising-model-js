@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Two-dimensional Ising Model - Ising</title><link href="https://jkglasbrenner.github.io/ising-model-js/" rel="alternate"></link><link href="https://jkglasbrenner.github.io/ising-model-js/feeds/ising.atom.xml" rel="self"></link><id>https://jkglasbrenner.github.io/ising-model-js/</id><updated>2017-12-11T08:30:00-05:00</updated><entry><title>Ising Model</title><link href="https://jkglasbrenner.github.io/ising-model-js/" rel="alternate"></link><published>2017-12-11T08:30:00-05:00</published><updated>2017-12-11T08:30:00-05:00</updated><author><name>James K. Glasbrenner</name></author><id>tag:jkglasbrenner.github.io,2017-12-11:/ising-model-js/</id><summary type="html">&lt;h2 id="simulation-details"&gt;Simulation&amp;nbsp;details&lt;/h2&gt;
+&lt;p&gt;The simulation takes place on a two-dimensional &lt;span class="math inline"&gt;\(n \times n\)&lt;/span&gt; square grid, with &lt;span class="math inline"&gt;\(n = 100\)&lt;/span&gt; being the initial default&amp;nbsp;setting.&lt;/p&gt;
+&lt;h2 id="simulation"&gt;Simulation&lt;/h2&gt;
+&lt;div class="visualization browser-default"&gt;
+&lt;div id="isingModel" class="simulation"&gt;
+
+&lt;/div&gt;
+&lt;div class="noUiSlider controls"&gt;
+&lt;div class="simButton"&gt;
+&lt;button id="startPauseButton"&gt;
+Start
+&lt;/button&gt;
+&lt;button id="resetButton"&gt;
+Reset
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class="simSlider"&gt;
+&lt;div id="temperature"&gt;
+
+&lt;/div&gt;
+&lt;p&gt;&lt;span id="temperatureValue" class="widget-val"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</summary><content type="html">&lt;h2 id="simulation-details"&gt;Simulation&amp;nbsp;details&lt;/h2&gt;
+&lt;p&gt;The simulation takes place on a two-dimensional &lt;span class="math inline"&gt;\(n \times n\)&lt;/span&gt; square grid, with &lt;span class="math inline"&gt;\(n = 100\)&lt;/span&gt; being the initial default&amp;nbsp;setting.&lt;/p&gt;
+&lt;h2 id="simulation"&gt;Simulation&lt;/h2&gt;
+&lt;div class="visualization browser-default"&gt;
+&lt;div id="isingModel" class="simulation"&gt;
+
+&lt;/div&gt;
+&lt;div class="noUiSlider controls"&gt;
+&lt;div class="simButton"&gt;
+&lt;button id="startPauseButton"&gt;
+Start
+&lt;/button&gt;
+&lt;button id="resetButton"&gt;
+Reset
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class="simSlider"&gt;
+&lt;div id="temperature"&gt;
+
+&lt;/div&gt;
+&lt;p&gt;&lt;span id="temperatureValue" class="widget-val"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content></entry></feed>
