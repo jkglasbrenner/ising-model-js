@@ -1,0 +1,31 @@
+Title: Ising Model
+Author: James K. Glasbrenner
+Date: 2017-12-11 08:30
+Modified: 2017-12-11 08:30
+Url:
+Slug: index.html
+Save_As: index.html
+
+## Simulation details
+
+The simulation takes place on a two-dimensional $n \times n$ square grid, with $n = 100$ being the initial default setting.
+
+## Simulation
+
+<div class="visualization browser-default">
+<div class="simulation" id='isingModel'></div>
+
+<div class="noUiSlider controls">
+<div class="simButton">
+<button id="startPauseButton">Start</button>
+<button id="resetButton">Reset</button>
+</div>
+<div class="simSlider">
+<div id='temperature'></div>
+<span class="widget-val" id="temperatureValue"></span>
+</div>
+</div>
+</div>
+
+
+
