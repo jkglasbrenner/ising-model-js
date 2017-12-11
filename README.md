@@ -1,6 +1,6 @@
 # `ising-model.js`
 
-The two-dimensional *Ising model* implemented in Javascript.
+The two-dimensional *Ising Model* implemented in Javascript.
 
 ## License
 
