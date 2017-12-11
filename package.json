@@ -1,14 +1,14 @@
 {
-  "name": "ising-model",
+  "name": "ising-model-js",
   "version": "0.1.0",
-  "description": "The two-dimensional Ising model simulation implemented in Javascript",
+  "description": "The two-dimensional Ising Model implemented in Javascript",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mason-cds-intro-comput-sci/ising-model.git"
+    "url": "git+https://github.com/jkglasbrenner/ising-model-js.git"
   },
   "keywords": [
     "simulation",
@@ -19,9 +19,9 @@
   "author": "James K. Glasbrenner",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mason-cds-intro-comput-sci/ising-model/issues"
+    "url": "https://github.com/jkglasbrenner/ising-model-js/issues"
   },
-  "homepage": "https://github.com/mason-cds-intro-comput-sci/ising-model#readme",
+  "homepage": "https://github.com/jkglasbrenner/ising-model-js#readme",
   "dependencies": {
     "chance": "^1.0.12",
     "nouislider": "^10.1.0"
