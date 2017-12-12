@@ -61,7 +61,7 @@ We can compute a total energy for the system as follows:
 
 5.  Repeat steps 1--4 for all remaining squares in the grid
 
-6.  After checking every square, sum together **all** of the logged numbers from step 4 to produce a single number
+6.  After checking every square, sum together **all** of the logged numbers from step 4 to produce a single number, then divide by 2 (this is because of double counting, you only want to count each pair of squares once when computing the total energy, but this procedure will count every pair twice)
 
 The number that you compute at the end of step 6 is the system's total energy.
 To further illustrate, imagine we have a yellow square with one blue neighbor and three yellow neighbors.
