@@ -16,7 +16,7 @@
 &lt;li&gt;&lt;p&gt;Multiply each of the four neighbor values by the central square’s&amp;nbsp;value&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Sum up the four products to produce a single value, then take the negative of this value (for example, a &lt;span class="math inline"&gt;\(2\)&lt;/span&gt; will become &lt;span class="math inline"&gt;\(-2\)&lt;/span&gt;) and save the result, which should be a value between &lt;span class="math inline"&gt;\(-4\)&lt;/span&gt; and &lt;span class="math inline"&gt;\(4\)&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Repeat steps 1–4 for all remaining squares in the&amp;nbsp;grid&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;After checking every square, sum together &lt;strong&gt;all&lt;/strong&gt; of the logged numbers from step 4 to produce a single&amp;nbsp;number&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;After checking every square, sum together &lt;strong&gt;all&lt;/strong&gt; of the logged numbers from step 4 to produce a single number, then divide by 2 (this is because of double counting, you only want to count each pair of squares once when computing the total energy, but this procedure will count every pair&amp;nbsp;twice)&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;The number that you compute at the end of step 6 is the system’s total energy. To further illustrate, imagine we have a yellow square with one blue neighbor and three yellow neighbors. If we apply steps 1–4 to this scenario, we then compute the single square’s energy as &lt;span class="math inline"&gt;\(-(1 \times -1) - (1 \times 1) - (1 \times 1) - (1 \times 1) = -2\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;The role of thermal energy is described in the next&amp;nbsp;section.&lt;/p&gt;

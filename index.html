@@ -43,7 +43,7 @@
 <li><p>Multiply each of the four neighbor values by the central square’s&nbsp;value</p></li>
 <li><p>Sum up the four products to produce a single value, then take the negative of this value (for example, a <span class="math inline">\(2\)</span> will become <span class="math inline">\(-2\)</span>) and save the result, which should be a value between <span class="math inline">\(-4\)</span> and <span class="math inline">\(4\)</span></p></li>
 <li><p>Repeat steps 1–4 for all remaining squares in the&nbsp;grid</p></li>
-<li><p>After checking every square, sum together <strong>all</strong> of the logged numbers from step 4 to produce a single&nbsp;number</p></li>
+<li><p>After checking every square, sum together <strong>all</strong> of the logged numbers from step 4 to produce a single number, then divide by 2 (this is because of double counting, you only want to count each pair of squares once when computing the total energy, but this procedure will count every pair&nbsp;twice)</p></li>
 </ol>
 <p>The number that you compute at the end of step 6 is the system’s total energy. To further illustrate, imagine we have a yellow square with one blue neighbor and three yellow neighbors. If we apply steps 1–4 to this scenario, we then compute the single square’s energy as <span class="math inline">\(-(1 \times -1) - (1 \times 1) - (1 \times 1) - (1 \times 1) = -2\)</span>.</p>
 <p>The role of thermal energy is described in the next&nbsp;section.</p>
