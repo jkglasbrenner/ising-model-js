@@ -6,11 +6,107 @@ Url:
 Slug: index.html
 Save_As: index.html
 
-## Simulation details
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE, eval = TRUE, fig.width = 5, fig.asp = 0.618,
+  out.width = "70%", dpi = 120, fig.align = "center")
+```
 
-The simulation takes place on a two-dimensional $n \times n$ square grid, with $n = 100$ being the initial default setting.
+## Overview
+
+The *Ising Model* is a model of a permanent magnet.
+It is named after Ernst Ising, who solved the one-dimensional version exactly as part of his [1924 thesis][ising-thesis].
+The *Ising Model* is interesting due to the two- and three-dimensional versions exhibiting a [**phase transition**][phase-transition-wiki] at a critical temperature, above which the model no longer exhibits permanent magnetism.
+This is an example of short-range local interactions giving rise to extended long-range behavior, which can be a counter-intuitive and unexpected outcome.
+It should also be noted that the *Ising Model* is a special case of the more general [*Heisenberg Model*][heisenberg-model-wiki], which is a magnetic model that is still in use to this day.
+
+Only a specific version of the two-dimensional *Ising Model* can be solved exactly, and the three-dimensional version cannot be solved exactly in any form.
+Solving the Ising model is a statistical problem, and so its results can be numerically calculated using the [Monte Carlo method][monte-carlo-method-wiki] to run simulations.
+The Monte Carlo method for simulating the two-dimensional Ising model is a classic problem in statistical mechanics and magnetic modeling, and the simulation itself is intriguing to watch when converted into an animation.
+Furthermore, Ising-like models have been used outside of the field of physics to explain complex behaviorial phenomena, including [rational herding, segregation, and how languages change over time][ising-social-science-article].
+There has been great utility in studying this seemingly simple model, and it continues to play an important role in simulated-based science.
+
+## How the Simulation Works
+
+### Setup
+
+The simulation environment is bit like an over-sized checkerboard, in that it's a two-dimensional square grid with $n$ rows and $n$ columns.
+For the purposes of this simulation, we set $n=100$, meaning that there are 10,000 squares on the grid.
+To set things up, we first will populate the grid with two different colors of squares: **blue** and **yellow**.
+We do this by moving to each grid square and flipping a coin.
+If we get "heads", then we color the square **yellow**, else if we get "tails" we color the square **blue**.
+We repeat this process until we've colored every grid square either **yellow** or **blue**.
+
+### Energy
+
+If you've ever taken a physics class, you've likely encountered the concept of [**energy**][energy-encyclopedia], which is defined as the capacity for doing work.
+Energy comes in several forms, including potential, kinetic, electric, and thermal energy.
+For this simulation, we are dealing with two kinds of energy, electric energy and thermal energy.
+
+We call the full collection of yellow and blue squares the **system**.
+Although you might not know it simply by looking at the model itself, the squares themselves are meant to represent a lattice of atoms with electrons in their orbitals.
+The electrons can interact via the [Coulomb interaction][coulomb-wiki], meaning there is electrical energy in the system, and they must also obey the laws of quantum mechanics.
+In certain situations, [these interactions][exchange-wiki] lead to **magnetism** and **long-range magnetic ordering**, meaning that you have a permanent magnet, much like the magnets you might hang on your refrigerator.
+Thankfully, it is not necessary to know quantum mechanics or the details of magnetism in order to implement or interpret the Ising Model.
+
+We can compute a total energy for the system as follows:
+
+1.  Start with a grid square and look at its color, if it's yellow the square's value is $+1$, while if it's blue the square's value is $-1$
+
+2.  Inspect the square's four neighbors in the north, south, east, and west directions, note the color of each, and then convert that into a $+1$ or $-1$ value just as in step 1
+
+3.  Multiply each of the four neighbor values by the central square's value
+
+4.  Sum up the four products to produce a single value, then take the negative of this value (for example, a $2$ will become $-2$) and save the result, which should be a value between $-4$ and $4$
+
+5.  Repeat steps 1--4 for all remaining squares in the grid
+
+6.  After checking every square, sum together **all** of the logged numbers from step 4 to produce a single number
+
+The number that you compute at the end of step 6 is the system's total energy.
+To further illustrate, imagine we have a yellow square with one blue neighbor and three yellow neighbors.
+If we apply steps 1--4 to this scenario, we then compute the single square's energy as $-(1 \times -1) - (1 \times 1) - (1 \times 1) - (1 \times 1) = -2$.
+
+The role of thermal energy is described in the next section.
+
+### Temperature and Square Color Flipping
+
+In addition to initializing the grid, we also need to set the *Temperature* parameter, which by default is set to $T = 1$.
+If you are wondering why the temperature isn't specified in units of degrees Fahrenheit, Celsius, or Kelvin, that's because this simulation was implemented using "unit-less" parameters, which are convenient from a modeling and simulation perspective.
+What does temperature do in the context of the Ising Model?
+It introduces a non-zero probability that the system will transition from a state of lower energy, as computed in the previous section, to a state of higher energy.
+In order to compute this probability, we first look at how the energy of the system changes if we flip a yellow square to a blue square, or flip a blue square to yellow.
+We label the change in energy due to this test flip as $\Delta{}E$.
+Then, if $\Delta{}E$ is positive, meaning that the flip will *increase* the total energy, we calculate the probability of this transition occuring using the formula:
+\\[\text{Probability}=e^{\Delta{}E/T}\\]
+Below we outline how this probability factors into the simulation's algorithm.
+
+### Algorithm
+
+One step in the simulation proceeds as follows:
+
+1.  Select a square --- color is not important --- at random
+
+2.  Perform a test flip where the square changes color from yellow to blue or blue to yellow, and calculate how much this changes the total energy of the system
+
+3.  If the energy *decreases* after the test flip, then accept the flip and the time step is over, otherwise continue to step 4
+
+4.  If the energy *increases* after the test flip, compute the probability $e^{\Delta{}E/T}$
+
+5.  Generate a random number between 0 and 1
+
+6.  If the random number from step 5 is *smaller* than the probability in step 4, then accept the flip, if not then reject the flip
+
+Steps 1--6 are then repeated multiple times until the simulation is stopped by pressing the `Pause` button or closing the web browser.
+This particular algorithm is known as the [Metropolis-Hastings algorithm][metropolis-hastings-wiki].
 
 ## Simulation
+
+An implementation of *Ising Model* is below.
+Use the slider to adjust the temperature of the simulation, which can be varied in real-time as the simulation runs.
+**However, it is recommended that you don't continuously move the temperature slider around**.
+Instead, select a temperature and let things run for a while.
+If you wish to reset the simulation, press the `Reset` button.
 
 <div class="visualization browser-default">
 <div class="simulation" id='isingModel'></div>
@@ -27,5 +123,14 @@ The simulation takes place on a two-dimensional $n \times n$ square grid, with $
 </div>
 </div>
 
+<!-- Implicit links -->
 
-
+[coulomb-wiki]:                 https://en.wikipedia.org/wiki/Coulomb%27s_law
+[ising-thesis]:                 http://www.hs-augsburg.de/~harsch/anglica/Chronology/20thC/Ising/isi_fm00.html
+[exchange-wiki]:                https://en.wikipedia.org/wiki/Exchange_interaction
+[energy-encyclopedia]:          https://www.britannica.com/science/energy
+[heisenberg-model-wiki]:        https://en.wikipedia.org/wiki/Classical_Heisenberg_model
+[phase-transition-wiki]:        https://en.wikipedia.org/wiki/Phase_transition
+[monte-carlo-method-wiki]:      https://en.wikipedia.org/wiki/Monte_Carlo_method
+[metropolis-hastings-wiki]:     https://en.wikipedia.org/wiki/Metropolis-Hastings_algorithm
+[ising-social-science-article]: http://aapt.scitation.org/doi/10.1119/1.2779882
