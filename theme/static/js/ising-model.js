@@ -1949,7 +1949,8 @@ module.exports = function () {
   });
 
   resetButton.addEventListener('click', function () {
-
+    startPause.innerHTML = "Start";
+    resetButton.innerHTML = "Resetting";
   });
 };
 
@@ -11801,11 +11802,14 @@ module.exports = function ( grid, parameters ) {
 // Use of toRecursiveAnim adapted from
 // https://tkowal.wordpress.com/2014/09/07/functional-javascript-passing-additional-arguments-to-callback/
 
+const initGrid = require('../simulation/initGrid');
+const plotHeatmap = require('./plotHeatmap');
 const animateHeatmap = require('./animateHeatmap');
 const monteCarloSweep = require('../simulation/monteCarloSweep');
 
 let requestID;
 let startPause = document.getElementById('startPauseButton');
+let resetButton = document.getElementById('resetButton');
 
 const toRecursiveAnim = function ( callback, grid, parameters, spinFlipAlgorithm,
                                    rng ) {
@@ -11821,6 +11825,12 @@ const simulation = function( timestamp, grid, parameters, spinFlipAlgorithm,
     animateHeatmap( grid, parameters );
     requestAnimationFrame( toRecursiveAnim( simulation, grid, parameters,
                                             spinFlipAlgorithm, rng ) );
+  } else if ( resetButton.innerHTML === "Resetting" ) {
+    grid = initGrid( parameters.n, rng );
+    resetButton.innerHTML = "Reset";
+    plotHeatmap( grid, parameters );
+    requestAnimationFrame( toRecursiveAnim( simulation, grid, parameters,
+                                            spinFlipAlgorithm, rng ) );
   } else {
     requestAnimationFrame( toRecursiveAnim( simulation, grid, parameters,
                                             spinFlipAlgorithm, rng ) );
@@ -11832,7 +11842,7 @@ module.exports = function ( grid, parameters, spinFlipAlgorithm, rng ) {
                                           spinFlipAlgorithm, rng ) );
 };
 
-},{"../simulation/monteCarloSweep":14,"./animateHeatmap":18}],20:[function(require,module,exports){
+},{"../simulation/initGrid":10,"../simulation/monteCarloSweep":14,"./animateHeatmap":18,"./plotHeatmap":20}],20:[function(require,module,exports){
 module.exports = function ( grid, parameters ) {
   let data = [
     {
