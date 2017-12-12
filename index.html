@@ -27,9 +27,41 @@
   <h1>Ising&nbsp;Model</h1>
   <div class="divider mason-dark-turquoise"></div>
 
-  <h2 id="simulation-details">Simulation&nbsp;details</h2>
-<p>The simulation takes place on a two-dimensional <span class="math inline">\(n \times n\)</span> square grid, with <span class="math inline">\(n = 100\)</span> being the initial default&nbsp;setting.</p>
+  <h2 id="overview">Overview</h2>
+<p>The <em>Ising Model</em> is a model of a permanent magnet. It is named after Ernst Ising, who solved the one-dimensional version exactly as part of his <a href="http://www.hs-augsburg.de/~harsch/anglica/Chronology/20thC/Ising/isi_fm00.html">1924 thesis</a>. The <em>Ising Model</em> is interesting due to the two- and three-dimensional versions exhibiting a <a href="https://en.wikipedia.org/wiki/Phase_transition"><strong>phase transition</strong></a> at a critical temperature, above which the model no longer exhibits permanent magnetism. This is an example of short-range local interactions giving rise to extended long-range behavior, which can be a counter-intuitive and unexpected outcome. It should also be noted that the <em>Ising Model</em> is a special case of the more general <a href="https://en.wikipedia.org/wiki/Classical_Heisenberg_model"><em>Heisenberg Model</em></a>, which is a magnetic model that is still in use to this&nbsp;day.</p>
+<p>Only a specific version of the two-dimensional <em>Ising Model</em> can be solved exactly, and the three-dimensional version cannot be solved exactly in any form. Solving the Ising model is a statistical problem, and so its results can be numerically calculated using the <a href="https://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo method</a> to run simulations. The Monte Carlo method for simulating the two-dimensional Ising model is a classic problem in statistical mechanics and magnetic modeling, and the simulation itself is intriguing to watch when converted into an animation. Furthermore, Ising-like models have been used outside of the field of physics to explain complex behaviorial phenomena, including <a href="http://aapt.scitation.org/doi/10.1119/1.2779882">rational herding, segregation, and how languages change over time</a>. There has been great utility in studying this seemingly simple model, and it continues to play an important role in simulated-based&nbsp;science.</p>
+<h2 id="how-the-simulation-works">How the Simulation&nbsp;Works</h2>
+<h3 id="setup">Setup</h3>
+<p>The simulation environment is bit like an over-sized checkerboard, in that it’s a two-dimensional square grid with <span class="math inline">\(n\)</span> rows and <span class="math inline">\(n\)</span> columns. For the purposes of this simulation, we set <span class="math inline">\(n=100\)</span>, meaning that there are 10,000 squares on the grid. To set things up, we first will populate the grid with two different colors of squares: <strong>blue</strong> and <strong>yellow</strong>. We do this by moving to each grid square and flipping a coin. If we get “heads”, then we color the square <strong>yellow</strong>, else if we get “tails” we color the square <strong>blue</strong>. We repeat this process until we’ve colored every grid square either <strong>yellow</strong> or <strong>blue</strong>.</p>
+<h3 id="energy">Energy</h3>
+<p>If you’ve ever taken a physics class, you’ve likely encountered the concept of <a href="https://www.britannica.com/science/energy"><strong>energy</strong></a>, which is defined as the capacity for doing work. Energy comes in several forms, including potential, kinetic, electric, and thermal energy. For this simulation, we are dealing with two kinds of energy, electric energy and thermal&nbsp;energy.</p>
+<p>We call the full collection of yellow and blue squares the <strong>system</strong>. Although you might not know it simply by looking at the model itself, the squares themselves are meant to represent a lattice of atoms with electrons in their orbitals. The electrons can interact via the <a href="https://en.wikipedia.org/wiki/Coulomb%27s_law">Coulomb interaction</a>, meaning there is electrical energy in the system, and they must also obey the laws of quantum mechanics. In certain situations, <a href="https://en.wikipedia.org/wiki/Exchange_interaction">these interactions</a> lead to <strong>magnetism</strong> and <strong>long-range magnetic ordering</strong>, meaning that you have a permanent magnet, much like the magnets you might hang on your refrigerator. Thankfully, it is not necessary to know quantum mechanics or the details of magnetism in order to implement or interpret the Ising&nbsp;Model.</p>
+<p>We can compute a total energy for the system as&nbsp;follows:</p>
+<ol type="1">
+<li><p>Start with a grid square and look at its color, if it’s yellow the square’s value is <span class="math inline">\(+1\)</span>, while if it’s blue the square’s value is <span class="math inline">\(-1\)</span></p></li>
+<li><p>Inspect the square’s four neighbors in the north, south, east, and west directions, note the color of each, and then convert that into a <span class="math inline">\(+1\)</span> or <span class="math inline">\(-1\)</span> value just as in step&nbsp;1</p></li>
+<li><p>Multiply each of the four neighbor values by the central square’s&nbsp;value</p></li>
+<li><p>Sum up the four products to produce a single value, then take the negative of this value (for example, a <span class="math inline">\(2\)</span> will become <span class="math inline">\(-2\)</span>) and save the result, which should be a value between <span class="math inline">\(-4\)</span> and <span class="math inline">\(4\)</span></p></li>
+<li><p>Repeat steps 1–4 for all remaining squares in the&nbsp;grid</p></li>
+<li><p>After checking every square, sum together <strong>all</strong> of the logged numbers from step 4 to produce a single&nbsp;number</p></li>
+</ol>
+<p>The number that you compute at the end of step 6 is the system’s total energy. To further illustrate, imagine we have a yellow square with one blue neighbor and three yellow neighbors. If we apply steps 1–4 to this scenario, we then compute the single square’s energy as <span class="math inline">\(-(1 \times -1) - (1 \times 1) - (1 \times 1) - (1 \times 1) = -2\)</span>.</p>
+<p>The role of thermal energy is described in the next&nbsp;section.</p>
+<h3 id="temperature-and-square-color-flipping">Temperature and Square Color&nbsp;Flipping</h3>
+<p>In addition to initializing the grid, we also need to set the <em>Temperature</em> parameter, which by default is set to <span class="math inline">\(T = 1\)</span>. If you are wondering why the temperature isn’t specified in units of degrees Fahrenheit, Celsius, or Kelvin, that’s because this simulation was implemented using “unit-less” parameters, which are convenient from a modeling and simulation perspective. What does temperature do in the context of the Ising Model? It introduces a non-zero probability that the system will transition from a state of lower energy, as computed in the previous section, to a state of higher energy. In order to compute this probability, we first look at how the energy of the system changes if we flip a yellow square to a blue square, or flip a blue square to yellow. We label the change in energy due to this test flip as <span class="math inline">\(\Delta{}E\)</span>. Then, if <span class="math inline">\(\Delta{}E\)</span> is positive, meaning that the flip will <em>increase</em> the total energy, we calculate the probability of this transition occuring using the formula: <span class="math display">\[\text{Probability}=e^{\Delta{}E/T}\]</span> Below we outline how this probability factors into the simulation’s&nbsp;algorithm.</p>
+<h3 id="algorithm">Algorithm</h3>
+<p>One step in the simulation proceeds as&nbsp;follows:</p>
+<ol type="1">
+<li><p>Select a square — color is not important — at&nbsp;random</p></li>
+<li><p>Perform a test flip where the square changes color from yellow to blue or blue to yellow, and calculate how much this changes the total energy of the&nbsp;system</p></li>
+<li><p>If the energy <em>decreases</em> after the test flip, then accept the flip and the time step is over, otherwise continue to step&nbsp;4</p></li>
+<li><p>If the energy <em>increases</em> after the test flip, compute the probability <span class="math inline">\(e^{\Delta{}E/T}\)</span></p></li>
+<li><p>Generate a random number between 0 and&nbsp;1</p></li>
+<li><p>If the random number from step 5 is <em>smaller</em> than the probability in step 4, then accept the flip, if not then reject the&nbsp;flip</p></li>
+</ol>
+<p>Steps 1–6 are then repeated multiple times until the simulation is stopped by pressing the <code>Pause</code> button or closing the web browser. This particular algorithm is known as the <a href="https://en.wikipedia.org/wiki/Metropolis-Hastings_algorithm">Metropolis-Hastings algorithm</a>.</p>
 <h2 id="simulation">Simulation</h2>
+<p>An implementation of <em>Ising Model</em> is below. Use the slider to adjust the temperature of the simulation, which can be varied in real-time as the simulation runs. <strong>However, it is recommended that you don’t continuously move the temperature slider around</strong>. Instead, select a temperature and let things run for a while. If you wish to reset the simulation, press the <code>Reset</code> button.</p>
 <div class="visualization browser-default">
 <div id="isingModel" class="simulation">
 
@@ -51,12 +83,13 @@ Reset
 </div>
 </div>
 </div>
+<!-- Implicit links -->
 
 
   <br/>
   <p class="page-last-modified">
-    <time datetime="2017-12-11T08:30:00-05:00">
-      Last modified: Monday, December 11, 2017 08:30:00 AM EST
+    <time datetime="2017-12-11T19:45:00-05:00">
+      Last modified: Monday, December 11, 2017 07:45:00 PM EST
     </time>
   </p>
 </div>

@@ -1,7 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Two-dimensional Ising Model - Ising</title><link href="https://jkglasbrenner.github.io/ising-model-js/" rel="alternate"></link><link href="https://jkglasbrenner.github.io/ising-model-js/feeds/ising.atom.xml" rel="self"></link><id>https://jkglasbrenner.github.io/ising-model-js/</id><updated>2017-12-11T08:30:00-05:00</updated><entry><title>Ising Model</title><link href="https://jkglasbrenner.github.io/ising-model-js/" rel="alternate"></link><published>2017-12-11T08:30:00-05:00</published><updated>2017-12-11T08:30:00-05:00</updated><author><name>James K. Glasbrenner</name></author><id>tag:jkglasbrenner.github.io,2017-12-11:/ising-model-js/</id><summary type="html">&lt;h2 id="simulation-details"&gt;Simulation&amp;nbsp;details&lt;/h2&gt;
-&lt;p&gt;The simulation takes place on a two-dimensional &lt;span class="math inline"&gt;\(n \times n\)&lt;/span&gt; square grid, with &lt;span class="math inline"&gt;\(n = 100\)&lt;/span&gt; being the initial default&amp;nbsp;setting.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Two-dimensional Ising Model - Ising</title><link href="https://jkglasbrenner.github.io/ising-model-js/" rel="alternate"></link><link href="https://jkglasbrenner.github.io/ising-model-js/feeds/ising.atom.xml" rel="self"></link><id>https://jkglasbrenner.github.io/ising-model-js/</id><updated>2017-12-11T19:45:00-05:00</updated><entry><title>Ising Model</title><link href="https://jkglasbrenner.github.io/ising-model-js/" rel="alternate"></link><published>2017-12-11T08:30:00-05:00</published><updated>2017-12-11T19:45:00-05:00</updated><author><name>James K. Glasbrenner</name></author><id>tag:jkglasbrenner.github.io,2017-12-11:/ising-model-js/</id><summary type="html">&lt;h2 id="overview"&gt;Overview&lt;/h2&gt;
+&lt;p&gt;The &lt;em&gt;Ising Model&lt;/em&gt; is a model of a permanent magnet. It is named after Ernst Ising, who solved the one-dimensional version exactly as part of his &lt;a href="http://www.hs-augsburg.de/~harsch/anglica/Chronology/20thC/Ising/isi_fm00.html"&gt;1924 thesis&lt;/a&gt;. The &lt;em&gt;Ising Model&lt;/em&gt; is interesting due to the two- and three-dimensional versions exhibiting a &lt;a href="https://en.wikipedia.org/wiki/Phase_transition"&gt;&lt;strong&gt;phase transition&lt;/strong&gt;&lt;/a&gt; at a critical temperature, above …&lt;/p&gt;</summary><content type="html">&lt;h2 id="overview"&gt;Overview&lt;/h2&gt;
+&lt;p&gt;The &lt;em&gt;Ising Model&lt;/em&gt; is a model of a permanent magnet. It is named after Ernst Ising, who solved the one-dimensional version exactly as part of his &lt;a href="http://www.hs-augsburg.de/~harsch/anglica/Chronology/20thC/Ising/isi_fm00.html"&gt;1924 thesis&lt;/a&gt;. The &lt;em&gt;Ising Model&lt;/em&gt; is interesting due to the two- and three-dimensional versions exhibiting a &lt;a href="https://en.wikipedia.org/wiki/Phase_transition"&gt;&lt;strong&gt;phase transition&lt;/strong&gt;&lt;/a&gt; at a critical temperature, above which the model no longer exhibits permanent magnetism. This is an example of short-range local interactions giving rise to extended long-range behavior, which can be a counter-intuitive and unexpected outcome. It should also be noted that the &lt;em&gt;Ising Model&lt;/em&gt; is a special case of the more general &lt;a href="https://en.wikipedia.org/wiki/Classical_Heisenberg_model"&gt;&lt;em&gt;Heisenberg Model&lt;/em&gt;&lt;/a&gt;, which is a magnetic model that is still in use to this&amp;nbsp;day.&lt;/p&gt;
+&lt;p&gt;Only a specific version of the two-dimensional &lt;em&gt;Ising Model&lt;/em&gt; can be solved exactly, and the three-dimensional version cannot be solved exactly in any form. Solving the Ising model is a statistical problem, and so its results can be numerically calculated using the &lt;a href="https://en.wikipedia.org/wiki/Monte_Carlo_method"&gt;Monte Carlo method&lt;/a&gt; to run simulations. The Monte Carlo method for simulating the two-dimensional Ising model is a classic problem in statistical mechanics and magnetic modeling, and the simulation itself is intriguing to watch when converted into an animation. Furthermore, Ising-like models have been used outside of the field of physics to explain complex behaviorial phenomena, including &lt;a href="http://aapt.scitation.org/doi/10.1119/1.2779882"&gt;rational herding, segregation, and how languages change over time&lt;/a&gt;. There has been great utility in studying this seemingly simple model, and it continues to play an important role in simulated-based&amp;nbsp;science.&lt;/p&gt;
+&lt;h2 id="how-the-simulation-works"&gt;How the Simulation&amp;nbsp;Works&lt;/h2&gt;
+&lt;h3 id="setup"&gt;Setup&lt;/h3&gt;
+&lt;p&gt;The simulation environment is bit like an over-sized checkerboard, in that it’s a two-dimensional square grid with &lt;span class="math inline"&gt;\(n\)&lt;/span&gt; rows and &lt;span class="math inline"&gt;\(n\)&lt;/span&gt; columns. For the purposes of this simulation, we set &lt;span class="math inline"&gt;\(n=100\)&lt;/span&gt;, meaning that there are 10,000 squares on the grid. To set things up, we first will populate the grid with two different colors of squares: &lt;strong&gt;blue&lt;/strong&gt; and &lt;strong&gt;yellow&lt;/strong&gt;. We do this by moving to each grid square and flipping a coin. If we get “heads”, then we color the square &lt;strong&gt;yellow&lt;/strong&gt;, else if we get “tails” we color the square &lt;strong&gt;blue&lt;/strong&gt;. We repeat this process until we’ve colored every grid square either &lt;strong&gt;yellow&lt;/strong&gt; or &lt;strong&gt;blue&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3 id="energy"&gt;Energy&lt;/h3&gt;
+&lt;p&gt;If you’ve ever taken a physics class, you’ve likely encountered the concept of &lt;a href="https://www.britannica.com/science/energy"&gt;&lt;strong&gt;energy&lt;/strong&gt;&lt;/a&gt;, which is defined as the capacity for doing work. Energy comes in several forms, including potential, kinetic, electric, and thermal energy. For this simulation, we are dealing with two kinds of energy, electric energy and thermal&amp;nbsp;energy.&lt;/p&gt;
+&lt;p&gt;We call the full collection of yellow and blue squares the &lt;strong&gt;system&lt;/strong&gt;. Although you might not know it simply by looking at the model itself, the squares themselves are meant to represent a lattice of atoms with electrons in their orbitals. The electrons can interact via the &lt;a href="https://en.wikipedia.org/wiki/Coulomb%27s_law"&gt;Coulomb interaction&lt;/a&gt;, meaning there is electrical energy in the system, and they must also obey the laws of quantum mechanics. In certain situations, &lt;a href="https://en.wikipedia.org/wiki/Exchange_interaction"&gt;these interactions&lt;/a&gt; lead to &lt;strong&gt;magnetism&lt;/strong&gt; and &lt;strong&gt;long-range magnetic ordering&lt;/strong&gt;, meaning that you have a permanent magnet, much like the magnets you might hang on your refrigerator. Thankfully, it is not necessary to know quantum mechanics or the details of magnetism in order to implement or interpret the Ising&amp;nbsp;Model.&lt;/p&gt;
+&lt;p&gt;We can compute a total energy for the system as&amp;nbsp;follows:&lt;/p&gt;
+&lt;ol type="1"&gt;
+&lt;li&gt;&lt;p&gt;Start with a grid square and look at its color, if it’s yellow the square’s value is &lt;span class="math inline"&gt;\(+1\)&lt;/span&gt;, while if it’s blue the square’s value is &lt;span class="math inline"&gt;\(-1\)&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Inspect the square’s four neighbors in the north, south, east, and west directions, note the color of each, and then convert that into a &lt;span class="math inline"&gt;\(+1\)&lt;/span&gt; or &lt;span class="math inline"&gt;\(-1\)&lt;/span&gt; value just as in step&amp;nbsp;1&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Multiply each of the four neighbor values by the central square’s&amp;nbsp;value&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Sum up the four products to produce a single value, then take the negative of this value (for example, a &lt;span class="math inline"&gt;\(2\)&lt;/span&gt; will become &lt;span class="math inline"&gt;\(-2\)&lt;/span&gt;) and save the result, which should be a value between &lt;span class="math inline"&gt;\(-4\)&lt;/span&gt; and &lt;span class="math inline"&gt;\(4\)&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Repeat steps 1–4 for all remaining squares in the&amp;nbsp;grid&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;After checking every square, sum together &lt;strong&gt;all&lt;/strong&gt; of the logged numbers from step 4 to produce a single&amp;nbsp;number&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The number that you compute at the end of step 6 is the system’s total energy. To further illustrate, imagine we have a yellow square with one blue neighbor and three yellow neighbors. If we apply steps 1–4 to this scenario, we then compute the single square’s energy as &lt;span class="math inline"&gt;\(-(1 \times -1) - (1 \times 1) - (1 \times 1) - (1 \times 1) = -2\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The role of thermal energy is described in the next&amp;nbsp;section.&lt;/p&gt;
+&lt;h3 id="temperature-and-square-color-flipping"&gt;Temperature and Square Color&amp;nbsp;Flipping&lt;/h3&gt;
+&lt;p&gt;In addition to initializing the grid, we also need to set the &lt;em&gt;Temperature&lt;/em&gt; parameter, which by default is set to &lt;span class="math inline"&gt;\(T = 1\)&lt;/span&gt;. If you are wondering why the temperature isn’t specified in units of degrees Fahrenheit, Celsius, or Kelvin, that’s because this simulation was implemented using “unit-less” parameters, which are convenient from a modeling and simulation perspective. What does temperature do in the context of the Ising Model? It introduces a non-zero probability that the system will transition from a state of lower energy, as computed in the previous section, to a state of higher energy. In order to compute this probability, we first look at how the energy of the system changes if we flip a yellow square to a blue square, or flip a blue square to yellow. We label the change in energy due to this test flip as &lt;span class="math inline"&gt;\(\Delta{}E\)&lt;/span&gt;. Then, if &lt;span class="math inline"&gt;\(\Delta{}E\)&lt;/span&gt; is positive, meaning that the flip will &lt;em&gt;increase&lt;/em&gt; the total energy, we calculate the probability of this transition occuring using the formula: &lt;span class="math display"&gt;\[\text{Probability}=e^{\Delta{}E/T}\]&lt;/span&gt; Below we outline how this probability factors into the simulation’s&amp;nbsp;algorithm.&lt;/p&gt;
+&lt;h3 id="algorithm"&gt;Algorithm&lt;/h3&gt;
+&lt;p&gt;One step in the simulation proceeds as&amp;nbsp;follows:&lt;/p&gt;
+&lt;ol type="1"&gt;
+&lt;li&gt;&lt;p&gt;Select a square — color is not important — at&amp;nbsp;random&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Perform a test flip where the square changes color from yellow to blue or blue to yellow, and calculate how much this changes the total energy of the&amp;nbsp;system&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If the energy &lt;em&gt;decreases&lt;/em&gt; after the test flip, then accept the flip and the time step is over, otherwise continue to step&amp;nbsp;4&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If the energy &lt;em&gt;increases&lt;/em&gt; after the test flip, compute the probability &lt;span class="math inline"&gt;\(e^{\Delta{}E/T}\)&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Generate a random number between 0 and&amp;nbsp;1&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If the random number from step 5 is &lt;em&gt;smaller&lt;/em&gt; than the probability in step 4, then accept the flip, if not then reject the&amp;nbsp;flip&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Steps 1–6 are then repeated multiple times until the simulation is stopped by pressing the &lt;code&gt;Pause&lt;/code&gt; button or closing the web browser. This particular algorithm is known as the &lt;a href="https://en.wikipedia.org/wiki/Metropolis-Hastings_algorithm"&gt;Metropolis-Hastings algorithm&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id="simulation"&gt;Simulation&lt;/h2&gt;
+&lt;p&gt;An implementation of &lt;em&gt;Ising Model&lt;/em&gt; is below. Use the slider to adjust the temperature of the simulation, which can be varied in real-time as the simulation runs. &lt;strong&gt;However, it is recommended that you don’t continuously move the temperature slider around&lt;/strong&gt;. Instead, select a temperature and let things run for a while. If you wish to reset the simulation, press the &lt;code&gt;Reset&lt;/code&gt; button.&lt;/p&gt;
 &lt;div class="visualization browser-default"&gt;
 &lt;div id="isingModel" class="simulation"&gt;
 
@@ -23,28 +56,5 @@ Reset
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><content type="html">&lt;h2 id="simulation-details"&gt;Simulation&amp;nbsp;details&lt;/h2&gt;
-&lt;p&gt;The simulation takes place on a two-dimensional &lt;span class="math inline"&gt;\(n \times n\)&lt;/span&gt; square grid, with &lt;span class="math inline"&gt;\(n = 100\)&lt;/span&gt; being the initial default&amp;nbsp;setting.&lt;/p&gt;
-&lt;h2 id="simulation"&gt;Simulation&lt;/h2&gt;
-&lt;div class="visualization browser-default"&gt;
-&lt;div id="isingModel" class="simulation"&gt;
-
-&lt;/div&gt;
-&lt;div class="noUiSlider controls"&gt;
-&lt;div class="simButton"&gt;
-&lt;button id="startPauseButton"&gt;
-Start
-&lt;/button&gt;
-&lt;button id="resetButton"&gt;
-Reset
-&lt;/button&gt;
-&lt;/div&gt;
-&lt;div class="simSlider"&gt;
-&lt;div id="temperature"&gt;
-
-&lt;/div&gt;
-&lt;p&gt;&lt;span id="temperatureValue" class="widget-val"&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;!-- Implicit links --&gt;
 </content></entry></feed>
