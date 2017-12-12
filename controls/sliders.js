@@ -30,6 +30,7 @@ module.exports = function () {
   });
 
   resetButton.addEventListener('click', function () {
-
+    startPause.innerHTML = "Start";
+    resetButton.innerHTML = "Resetting";
   });
 };
