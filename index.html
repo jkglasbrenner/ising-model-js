@@ -30,6 +30,15 @@
   <h2 id="overview">Overview</h2>
 <p>The <em>Ising Model</em> is a model of a permanent magnet. It is named after Ernst Ising, who solved the one-dimensional version exactly as part of his <a href="http://www.hs-augsburg.de/~harsch/anglica/Chronology/20thC/Ising/isi_fm00.html">1924 thesis</a>. The <em>Ising Model</em> is interesting due to the two- and three-dimensional versions exhibiting a <a href="https://en.wikipedia.org/wiki/Phase_transition"><strong>phase transition</strong></a> at a critical temperature, above which the model no longer exhibits permanent magnetism. This is an example of short-range local interactions giving rise to extended long-range behavior, which can be a counter-intuitive and unexpected outcome. It should also be noted that the <em>Ising Model</em> is a special case of the more general <a href="https://en.wikipedia.org/wiki/Classical_Heisenberg_model"><em>Heisenberg Model</em></a>, which is a magnetic model that is still in use to this&nbsp;day.</p>
 <p>Only a specific version of the two-dimensional <em>Ising Model</em> can be solved exactly, and the three-dimensional version cannot be solved exactly in any form. Solving the Ising model is a statistical problem, and so its results can be numerically calculated using the <a href="https://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo method</a> to run simulations. The Monte Carlo method for simulating the two-dimensional Ising model is a classic problem in statistical mechanics and magnetic modeling, and the simulation itself is intriguing to watch when converted into an animation. Furthermore, Ising-like models have been used outside of the field of physics to explain complex behaviorial phenomena, including <a href="http://aapt.scitation.org/doi/10.1119/1.2779882">rational herding, segregation, and how languages change over time</a>. There has been great utility in studying this seemingly simple model, and it continues to play an important role in simulated-based&nbsp;science.</p>
+<h2 id="what-is-the-simulation">What is the&nbsp;Simulation?</h2>
+<p>Iron is a classic and familiar example of a permanent magnet. <a href="https://nationalmaglab.org/about/maglab-dictionary/permanent-magnet">Permanent magnets</a> are different from other kinds of magnets in that they generate a magnetic field via their internal structure. However, this type of magnetism cannot be sustained under all conditions. For example, above 1418 degrees Fahrenheit (the <strong>critical temperature</strong>) iron is no longer magnetic. And, it turns out, the demagnetization process that’s induced by heating a material is quite complicated, but yet can be modeled in a straightforward way. <strong>This is the context for the <em>Ising Model</em>: we want to model what happens to a permanent magnet as you increase the temperature and it starts to&nbsp;demagnetize.</strong></p>
+<p>It may sound overly simplistic, but a reasonable model for a permanent magnet is as a grid of arrows that either point up or down. A grid of all <em>up</em> arrows is called <strong>ferromagnetism</strong> and is a model of what happens with iron at lower&nbsp;temperatures:</p>
+<p><img src="https://jkglasbrenner.github.io/ising-model-js/../figures/ising-schematic-fm.svg" title="plot of chunk ising-fm-schematic" alt="plot of chunk ising-fm-schematic" width="40%" style="display: block; margin: auto;" /></p>
+<p>The subsections in <a href="#how-the-simulation-works">How the Simulation Works</a> explain some of the details behind <strong>why</strong> the arrows would prefer to all point in the same&nbsp;direction.</p>
+<p>Now, if we “turn on” the temperature, some of these arrows will start to flip their direction from up to down. Above the <strong>critical temperature</strong>, you will find that, on average, 50% of the arrows will point up and the other 50% will point down, much like in this&nbsp;image:</p>
+<p><img src="https://jkglasbrenner.github.io/ising-model-js/../figures/ising-schematic-paramagnet.svg" title="plot of chunk ising-nm-schematic" alt="plot of chunk ising-nm-schematic" width="40%" style="display: block; margin: auto;" /></p>
+<p>To take this a little further, imagine that you assign a value of <span class="math inline">\(+1\)</span> to each up arrow and a value of <span class="math inline">\(-1\)</span> to each down arrow. You then add the number of <span class="math inline">\(+1\)</span>s and <span class="math inline">\(-1\)</span>s together, which will give you the total magnetization. If the sum is 0 on average, then we have a paramagnet. If instead the sum is non-zero, then we have a&nbsp;ferromagnet.</p>
+<p>For our purposes, instead of using arrows, we will replace the blue up arrows with a light yellow square and wthe orange down arrows with a dark blue&nbsp;square.</p>
 <h2 id="how-the-simulation-works">How the Simulation&nbsp;Works</h2>
 <h3 id="setup">Setup</h3>
 <p>The simulation environment is bit like an over-sized checkerboard, in that it’s a two-dimensional square grid with <span class="math inline">\(n\)</span> rows and <span class="math inline">\(n\)</span> columns. For the purposes of this simulation, we set <span class="math inline">\(n=100\)</span>, meaning that there are 10,000 squares on the grid. To set things up, we first will populate the grid with two different colors of squares: <strong>blue</strong> and <strong>yellow</strong>. We do this by moving to each grid square and flipping a coin. If we get “heads”, then we color the square <strong>yellow</strong>, else if we get “tails” we color the square <strong>blue</strong>. We repeat this process until we’ve colored every grid square either <strong>yellow</strong> or <strong>blue</strong>.</p>
@@ -83,13 +92,21 @@ Reset
 </div>
 </div>
 </div>
+<h2 id="questions-to-think-about">Questions to think&nbsp;about</h2>
+<div class="userHtml browser-default">
+<ol type="1">
+<li><p>How does moving the temperature slider affect how easy it is for colors of the same color to clump&nbsp;together?</p></li>
+<li><p>Does the simulation ever reach a point where every grid cell is the same color? If so, can you destroy the same color state by ramping up the temperature slider? About how high does the simulation’s temperature need to be before something like this&nbsp;occurs?</p></li>
+<li><p>Can the “domain walls” that separate blue regions from yellow regions ever grow or shrink significantly over&nbsp;time?</p></li>
+</ol>
+</div>
 <!-- Implicit links -->
 
 
   <br/>
   <p class="page-last-modified">
-    <time datetime="2017-12-11T19:45:00-05:00">
-      Last modified: Monday, December 11, 2017 07:45:00 PM EST
+    <time datetime="2017-12-13T00:30:00-05:00">
+      Last modified: Wednesday, December 13, 2017 12:30:00 AM EST
     </time>
   </p>
 </div>
