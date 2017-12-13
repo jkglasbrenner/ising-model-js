@@ -39,7 +39,7 @@ It may sound overly simplistic, but a reasonable model for a permanent magnet is
 A grid of all *up* arrows is called **ferromagnetism** and is a model of what happens with iron at lower temperatures:
 
 ```{r ising-fm-schematic, out.width = "40%"}
-knitr::include_graphics("../figures/ising-schematic-fm.svg")
+knitr::include_graphics("/figures/ising-schematic-fm.svg")
 ```
 
 The subsections in [How the Simulation Works](#how-the-simulation-works) explain some of the details behind **why** the arrows would prefer to all point in the same direction.
@@ -48,7 +48,7 @@ Now, if we "turn on" the temperature, some of these arrows will start to flip th
 Above the **critical temperature**, you will find that, on average, 50% of the arrows will point up and the other 50% will point down, much like in this image:
 
 ```{r ising-nm-schematic, out.width = "40%"}
-knitr::include_graphics("../figures/ising-schematic-paramagnet.svg")
+knitr::include_graphics("/figures/ising-schematic-paramagnet.svg")
 ```
 
 To take this a little further, imagine that you assign a value of $+1$ to each up arrow and a value of $-1$ to each down arrow.
