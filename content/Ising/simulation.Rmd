@@ -1,7 +1,7 @@
 Title: Ising Model
 Author: James K. Glasbrenner
 Date: 2017-12-11 08:30
-Modified: 2017-12-11 19:45
+Modified: 2017-12-13 00:30
 Url:
 Slug: index.html
 Save_As: index.html
@@ -25,6 +25,38 @@ Solving the Ising model is a statistical problem, and so its results can be nume
 The Monte Carlo method for simulating the two-dimensional Ising model is a classic problem in statistical mechanics and magnetic modeling, and the simulation itself is intriguing to watch when converted into an animation.
 Furthermore, Ising-like models have been used outside of the field of physics to explain complex behaviorial phenomena, including [rational herding, segregation, and how languages change over time][ising-social-science-article].
 There has been great utility in studying this seemingly simple model, and it continues to play an important role in simulated-based science.
+
+## What is the Simulation?
+
+Iron is a classic and familiar example of a permanent magnet.
+[Permanent magnets][permanent-magnet-link] are different from other kinds of magnets in that they generate a magnetic field via their internal structure.
+However, this type of magnetism cannot be sustained under all conditions.
+For example, above 1418 degrees Fahrenheit (the **critical temperature**) iron is no longer magnetic.
+And, it turns out, the demagnetization process that's induced by heating a material is quite complicated, but yet can be modeled in a straightforward way.
+**This is the context for the *Ising Model*: we want to model what happens to a permanent magnet as you increase the temperature and it starts to demagnetize.**
+
+It may sound overly simplistic, but a reasonable model for a permanent magnet is as a grid of arrows that either point up or down.
+A grid of all *up* arrows is called **ferromagnetism** and is a model of what happens with iron at lower temperatures:
+
+```{r ising-fm-schematic, out.width = "40%"}
+knitr::include_graphics("../figures/ising-schematic-fm.svg")
+```
+
+The subsections in [How the Simulation Works](#how-the-simulation-works) explain some of the details behind **why** the arrows would prefer to all point in the same direction.
+
+Now, if we "turn on" the temperature, some of these arrows will start to flip their direction from up to down.
+Above the **critical temperature**, you will find that, on average, 50% of the arrows will point up and the other 50% will point down, much like in this image:
+
+```{r ising-nm-schematic, out.width = "40%"}
+knitr::include_graphics("../figures/ising-schematic-paramagnet.svg")
+```
+
+To take this a little further, imagine that you assign a value of $+1$ to each up arrow and a value of $-1$ to each down arrow.
+You then add the number of $+1$s and $-1$s together, which will give you the total magnetization.
+If the sum is 0 on average, then we have a paramagnet.
+If instead the sum is non-zero, then we have a ferromagnet.
+
+For our purposes, instead of using arrows, we will replace the blue up arrows with a light yellow square and wthe orange down arrows with a dark blue square.
 
 ## How the Simulation Works
 
@@ -123,6 +155,20 @@ If you wish to reset the simulation, press the `Reset` button.
 </div>
 </div>
 
+## Questions to think about
+
+<div class="userHtml browser-default">
+
+1.  How does moving the temperature slider affect how easy it is for colors of the same color to clump together?
+
+2.  Does the simulation ever reach a point where every grid cell is the same color?
+    If so, can you destroy the same color state by ramping up the temperature slider?
+    About how high does the simulation's temperature need to be before something like this occurs?
+
+3.  Can the "domain walls" that separate blue regions from yellow regions ever grow or shrink significantly over time?
+
+</div>
+
 <!-- Implicit links -->
 
 [coulomb-wiki]:                 https://en.wikipedia.org/wiki/Coulomb%27s_law
@@ -130,6 +176,7 @@ If you wish to reset the simulation, press the `Reset` button.
 [exchange-wiki]:                https://en.wikipedia.org/wiki/Exchange_interaction
 [energy-encyclopedia]:          https://www.britannica.com/science/energy
 [heisenberg-model-wiki]:        https://en.wikipedia.org/wiki/Classical_Heisenberg_model
+[permanent-magnet-link]:        https://nationalmaglab.org/about/maglab-dictionary/permanent-magnet
 [phase-transition-wiki]:        https://en.wikipedia.org/wiki/Phase_transition
 [monte-carlo-method-wiki]:      https://en.wikipedia.org/wiki/Monte_Carlo_method
 [metropolis-hastings-wiki]:     https://en.wikipedia.org/wiki/Metropolis-Hastings_algorithm
