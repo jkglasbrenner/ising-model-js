@@ -26,8 +26,8 @@ define bundlejs
 endef
 
 define servejs
-	$(ECHO) Serving $(CURDIR) on port $(SERVE_PORT)
-	$(SERVE) -s $(CURDIR) -p $(SERVE_PORT)
+	$(ECHO) Serving $(CURDIR) on port $(JS_SERVE_PORT)
+	$(JS_SERVE) -s $(CURDIR) -p $(JS_SERVE_PORT)
 endef
 
 define cleanup
