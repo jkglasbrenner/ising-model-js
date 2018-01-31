@@ -496,6 +496,30 @@ vignettes/*.pdf
 # direnv
 .envrc
 
+# jetbrains
+*.iws
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/dataSources.xml
+.idea/**/dynamic.xml
+.idea/**/gradle.xml
+.idea/**/libraries
+.idea/**/mongoSettings.xml
+.idea/**/sqlDataSources.xml
+.idea/**/tasks.xml
+.idea/**/uiDesigner.xml
+.idea/**/workspace.xml
+.idea/replstate.xml
+atlassian-ide-plugin.xml
+com_crashlytics_export_strings.xml
+crashlytics-build.properties
+crashlytics.properties
+fabric.properties
+.idea/dictionaries
+.idea/**/dataSources/
+cmake-build-debug/
+cmake-build-release/
+
 # Project specific
 output
 dist
