@@ -2,6 +2,8 @@ const noUiSlider = require('nouislider');
 
 module.exports = function () {
   let temperature = document.getElementById('temperature');
+  let exchange1NN = document.getElementById('exchange1NN');
+  let exchange2NN = document.getElementById('exchange2NN');
   let startPause = document.getElementById('startPauseButton');
   let resetButton = document.getElementById('resetButton');
 
@@ -16,8 +18,40 @@ module.exports = function () {
     }
   });
 
+  noUiSlider.create(exchange1NN, {
+    start: 1.0,
+    step: 0.1,
+    behavior: 'tap',
+    orientation: "horizontal",
+    connect: [true, false],
+    range: {
+      min: -3.0,
+      max: 3.0
+    }
+  });
+
+  noUiSlider.create(exchange2NN, {
+    start: 0.0,
+    step: 0.1,
+    behavior: 'tap',
+    orientation: "horizontal",
+    connect: [true, false],
+    range: {
+      min: -3.0,
+      max: 3.0
+    }
+  });
+
   temperature.noUiSlider.on('update', function( values, handle ){
 	temperatureValue.innerHTML = values[handle];
+  });
+
+  exchange1NN.noUiSlider.on('update', function( values, handle ){
+    exchange1NNValue.innerHTML = values[ handle ];
+  });
+
+  exchange2NN.noUiSlider.on('update', function( values, handle ){
+    exchange2NNValue.innerHTML = values[ handle ];
   });
 
   startPause.addEventListener('click', function () {

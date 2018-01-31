@@ -22,6 +22,18 @@ button {
   display: inline-block;
 }
 
+#exchange1NN {
+  margin: auto;
+  width: 100%;
+  display: inline-block;
+}
+
+#exchange2NN {
+  margin: auto;
+  width: 100%;
+  display: inline-block;
+}
+
 .widget-val {
   display: inline-block;
   margin: auto;
@@ -31,6 +43,14 @@ button {
 
 #temperatureValue:before {
   content: "Temperature: ";
+}
+
+#exchange1NNValue:before {
+  content: "J1: ";
+}
+
+#exchange2NNValue:before {
+  content: "J2: ";
 }
 
 .simButton {
@@ -56,4 +76,11 @@ button {
   margin: auto;
   height: 40px;
   width: 80px;
+}
+
+.simSlider {
+  display: block;
+  vertical-align: middle;
+  margin: auto;
+  padding-bottom: 20px;
 }
