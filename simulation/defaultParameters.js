@@ -10,7 +10,9 @@ module.exports = function () {
     redrawFrames: true,
     energy: 0.0,
     magnetization: 0.0,
-    exchangeParameter: 1.0
+    exchangeParameter: 1.0,
+    exchangeParameterTwo: 1.0,
+    secondNN: true
   };
   defaultParameters.numberSites = Math.pow(defaultParameters.n, 2);
 
