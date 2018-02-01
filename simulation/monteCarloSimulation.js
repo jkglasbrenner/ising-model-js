@@ -10,6 +10,8 @@ const sliders = require('../controls/sliders');
 module.exports = function () {
   sliders();
   let parameters = defaultParameters();
+  parameters["sweepNumber"] = 0;
+  parameters["magnetization"] = 0;
   let rng = Chance( parameters.seed );
   let grid = initGrid( parameters.n, rng );
   if ( parameters.showAnimation ) {
