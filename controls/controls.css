@@ -53,6 +53,14 @@ button {
   content: "J2: ";
 }
 
+#numberSweeps:before {
+  content: "Sweeps: ";
+}
+
+#averageMagnetization:before {
+  content: "Avg. M: ";
+}
+
 .simButton {
   display: block;
   vertical-align: middle;
