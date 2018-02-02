@@ -8,5 +8,6 @@ module.exports = function ( grid, parameters, spinFlipAlgorithm, rng ) {
   if ( isSpinFlip ) {
     grid[ ij[ 0 ] ][ ij[ 1 ] ] *= -1;
     parameters.energy += energyDifference;
+    parameters.magnetization += 2 * grid[ ij[ 0 ]][ ij[ 1 ]];
   }
 };
