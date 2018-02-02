@@ -1,11 +1,24 @@
 const noUiSlider = require('nouislider');
 
 module.exports = function () {
+  let gridSize = document.getElementById('gridSize');
   let temperature = document.getElementById('temperature');
   let exchange1NN = document.getElementById('exchange1NN');
   let exchange2NN = document.getElementById('exchange2NN');
   let startPause = document.getElementById('startPauseButton');
   let resetButton = document.getElementById('resetButton');
+
+  noUiSlider.create(gridSize, {
+    start: 50,
+    step: 1,
+    behavior: 'tap',
+    orientation: "horizontal",
+    connect: [true, false],
+    range: {
+      min: 2,
+      max: 100
+    }
+  });
 
   noUiSlider.create(temperature, {
     start: 1,
@@ -40,6 +53,10 @@ module.exports = function () {
       min: -3.0,
       max: 3.0
     }
+  });
+
+  gridSize.noUiSlider.on('update', function( values, handle ){
+    gridSizeValue.innerHTML = Math.round( values[handle] );
   });
 
   temperature.noUiSlider.on('update', function( values, handle ){
