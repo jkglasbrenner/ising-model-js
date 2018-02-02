@@ -10,15 +10,20 @@ const sliders = require('../controls/sliders');
 module.exports = function () {
   sliders();
   let parameters = defaultParameters();
-  parameters["sweepNumber"] = 0;
-  parameters["magnetization"] = 0;
   let rng = Chance( parameters.seed );
-  let grid = initGrid( parameters.n, rng );
   if ( parameters.showAnimation ) {
+    let gridSize = document.getElementById('gridSize');
+    let numberSweeps = document.getElementById('numberSweeps');
+    let averageMagnetization = document.getElementById('averageMagnetization');
+    numberSweeps.innerText = 0;
+    parameters.gridSize = gridSize.noUiSlider.get();
+    let grid = initGrid( parameters, rng );
+    averageMagnetization.innerText = parameters.magnetization;
     plotHeatmap( grid, parameters );
     animateSimulation( grid, parameters, spinFlipAlgorithm, rng );
   } else {
     let sweep = 0;
+    let grid = initGrid( parameters, rng );
     while ( sweep < parameters.nsweeps ) {
       monteCarloSweep( grid, parameters, spinFlipAlgorithm, rng );
       sweep++;
